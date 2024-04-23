@@ -1,31 +1,44 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { TouchableOpacity } from "react-native";
 
 import Home from "../screen/Home";
 import CriptoListas from "../screen/CriptoListas";
 import Referencias from "../screen/Referencias";
 import Perfil from "../screen/Perfil";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+// import Noticias from "../screen/Noticias";
+import { changeVisibiliteModel } from "../../redux/currencySlice";
 import TabIcons from "../components/TabIcons";
 import icons from "../../constants/icons";
-import { TouchableOpacity } from "react-native";
-// import Noticias from "../screen/Noticias";
+
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { ReactNode } from "react";
+
+interface paransTabButton {
+    children: ReactNode 
+    onPress(): void
+};
 
 const TabButtonsNaigator = createBottomTabNavigator();
 
-// interface paransTabButton {
-//     children: string
-// }
-
-const TabBarButtonCustom = ({ children }) => {
+const TabBarButtonCustom = ({ children, onPress }: paransTabButton) => {
     return (
-        <TouchableOpacity className="flex-1 items-center justify-center" onPress={() => console.log('trade pressionado')}>
+        <TouchableOpacity className="flex-1 items-center justify-center" onPress={onPress}>
             {children}
         </TouchableOpacity>
     );
 }
 
-const TabNavigation = () => {
-    return ( 
+export const TabNavigation = () => {
+
+    const dispatchTradeModel = useAppDispatch();
+    const selectorTradeModel = useAppSelector(state => state.Currency.isTradeModelVisible)
+
+    function isTradeModelButtonClickHundle(): void {
+        dispatchTradeModel(changeVisibiliteModel(!selectorTradeModel));
+    }
+
+    return (
         <TabButtonsNaigator.Navigator 
             screenOptions={{
                     headerShown: false,
@@ -38,15 +51,24 @@ const TabNavigation = () => {
                 component={Home} 
                 options={{
                     tabBarIcon: ({ focused }) => {
-                        return (
-                            <TabIcons
-                                focused={focused}
-                                icon={icons.home}
-                                label='Home'
-                                isTrade={false}
-                            />
-                        )
+                        if (!selectorTradeModel) {
+                            return (
+                                <TabIcons
+                                    focused={focused}
+                                    icon={icons.home}
+                                    label='Home'
+                                    isTrade={false}
+                                />
+                            )
+                        }
                     }
+                }}
+                listeners={{
+                   tabPress: e => {
+                    if (selectorTradeModel) {
+                        e.preventDefault();
+                    }
+                   }
                 }}
             />
             <TabButtonsNaigator.Screen 
@@ -54,16 +76,25 @@ const TabNavigation = () => {
                 component={CriptoListas} 
                 options={{
                     tabBarIcon: ({ focused }) => {
-                        return (
-                            <TabIcons
-                                focused={focused}
-                                icon={icons.market}
-                                label='Market'
-                                isTrade={false}
-                            />
-                        )
+                        if (!selectorTradeModel) {
+                            return (
+                                <TabIcons
+                                    focused={focused}
+                                    icon={icons.market}
+                                    label='Market'
+                                    isTrade={false}
+                                />
+                            )
+                        }
                     }
                 }}
+                listeners={{
+                    tabPress: e => {
+                     if (selectorTradeModel) {
+                         e.preventDefault();
+                     }
+                    }
+                 }}
             />
             <TabButtonsNaigator.Screen 
                 name="Trade" 
@@ -73,14 +104,21 @@ const TabNavigation = () => {
                         return (
                             <TabIcons
                                 focused={focused}
-                                icon={icons.tradeIcon}
+                                icon={selectorTradeModel? icons.close: icons.tradeIcon}
+                                iconStyle={selectorTradeModel? {
+                                    width: 35,
+                                    height: 22
+                                }: null}
                                 label='Trade'
                                 isTrade={true}
-                            />
+                            />              
                         )
                     },
                     tabBarButton: (props) => (
-                        <TabBarButtonCustom {...props}/>
+                        <TabBarButtonCustom 
+                            {...props}
+                            onPress={() => isTradeModelButtonClickHundle()}
+                        />
                     )
                 }}
             />
@@ -89,41 +127,51 @@ const TabNavigation = () => {
                 component={Referencias} 
                 options={{
                     tabBarIcon: ({ focused }) => {
-                        return (
-                            <TabIcons
-                                focused={focused}
-                                icon={icons.study}
-                                label='Estudos'
-                                isTrade={false}
-                            />
-                        )
+                        if (!selectorTradeModel) {
+                            return (
+                                <TabIcons
+                                    focused={focused}
+                                    icon={icons.study}
+                                    label='Estudos'
+                                    isTrade={false}
+                                />
+                            )
+                        }
                     }
                 }}
+                listeners={{
+                    tabPress: e => {
+                     if (selectorTradeModel) {
+                         e.preventDefault();
+                     }
+                    }
+                 }}
             />
             <TabButtonsNaigator.Screen 
                 name="Perfil" 
                 component={Perfil}
                 options={{
                     tabBarIcon: ({ focused }) => {
-                        return (
-                            <TabIcons
-                                focused={focused}
-                                icon={icons.profile}
-                                label='Perfil'
-                                isTrade={false}
-                            />
-                        )
+                        if (!selectorTradeModel) {
+                            return (
+                                <TabIcons
+                                    focused={focused}
+                                    icon={icons.profile}
+                                    label='Perfil'
+                                    isTrade={false}
+                                />
+                            )
+                        }
                     }
                 }} 
+                listeners={{
+                    tabPress: e => {
+                     if (selectorTradeModel) {
+                         e.preventDefault();
+                     }
+                    }
+                 }}
             />
         </TabButtonsNaigator.Navigator>
-    )
-}
-
-export default function AppNavigator() {
-    return (
-        <NavigationContainer>
-            <TabNavigation />
-        </NavigationContainer>
     )
 }

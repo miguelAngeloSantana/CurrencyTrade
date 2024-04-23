@@ -1,17 +1,29 @@
-import { Button, Text, View } from 'react-native';
-import { useState } from 'react';
-import AppNavigator from './src/cryptoCurrency/navigation/AppNavigator';
-import AppNavigationCoin from './src/Currency/navigation/AppNavigationCoin';
+import React from 'react'
+
+import { CurrencyChooseNavigator } from './src/redux/currencyChooseNavigator';
+import { store } from './src/redux/store';
+
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
+import 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+
+const Stack = createStackNavigator();
 
 export default function App() {
-
-  const [isCryptoVisible, setIsCryptoVisible] = useState(true);
-  
   return (
-    <>
-      {
-        isCryptoVisible? <AppNavigator />: <AppNavigationCoin />
-      }
-    </>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator 
+          screenOptions={{headerShown: false}} 
+          initialRouteName={'TelaPrincipal'}
+        >
+          <Stack.Screen 
+            name="TelaPrincipal" 
+            component={CurrencyChooseNavigator}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }

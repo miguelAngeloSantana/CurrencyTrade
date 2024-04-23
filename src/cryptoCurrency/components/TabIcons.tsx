@@ -1,28 +1,42 @@
 import React from "react";
-import {View, Text, Image} from "react-native";
+import { View, Text, Image } from "react-native";
 
-export default function TabIcons({focused, icon, label, isTrade}) {
+interface paramsTabIcons {
+    focused: boolean
+    icon: number 
+    label: string 
+    isTrade: boolean
+    iconStyle?: {
+        width:number,
+        height:number,
+    }
+}
+
+
+export default function TabIcons({ focused, icon, label, isTrade, iconStyle }: paramsTabIcons) {
     if (isTrade) {
         return (
             <View 
                 style={{
                     alignItems: "center",
                     justifyContent: "center",
-                    // width: 60,
-                    // height: 60,
-                    // borderRadius: 30,
-                    // backgroundColor: "#363636"
+                    width: 63,
+                    height: 63,
+                    borderRadius: 35,
+                    backgroundColor: "#363636",
                 }}
             >
                 <Image  
                     source={icon}
+                    resizeMode="contain"
                     style={{
                         width: 20,
                         height: 20,
-                        tintColor: 'white'
+                        tintColor: 'white',
+                        ...iconStyle
                     }}
                 />
-                <Text className="text-white text-xs m-2">{label}</Text>
+                <Text className="text-white text-xs mt-2">{label}</Text>
             </View>
         )
     } else {
@@ -30,9 +44,10 @@ export default function TabIcons({focused, icon, label, isTrade}) {
             <View className="items-center justify-center">
                 <Image
                     source={icon}
+                    resizeMode="contain"
                     style={{
-                        width: 17,
-                        height: 17,
+                        width: 20,
+                        height: 20,
                         tintColor: focused? 'white': "#999"
                     }}
                 />
