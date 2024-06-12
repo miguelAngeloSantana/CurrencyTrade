@@ -5,18 +5,22 @@ module.exports = {
     extend: {
       colors: {
         'bg-theme-black': '#121212',
-        'bg-theme-black-main': '#06121F',
+        'theme-black-main': '#06121F',
         'white': '#FAFAFA',
         'gray': {
           50: 'rgba(245,245,245, .1)',
           200: '#E0E0E0',
           500: '#757575'
         },
-        'Lime': {
+        'zinc': {
+          500: '#606060',
+          700: '#404040'
+        },
+        'lime': {
           400: '#33FF00'
         },
-        'Red': {
-          600: 'FB2c2c'
+        'red': {
+          600: '#FB2c2c'
         }
       }
     },

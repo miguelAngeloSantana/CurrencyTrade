@@ -1,5 +1,4 @@
-import React from "react";
-import { Text, TouchableOpacity, Image } from "react-native"
+import { Text, TouchableOpacity, Image } from "react-native";
 
 interface PropsTextButton {
     label: string
@@ -8,7 +7,7 @@ interface PropsTextButton {
     conteinerStyle?: {
         marginTop: number
     }
-}
+};
 
 
 export const IconTextButton = ({ label, icon, onPress, conteinerStyle }: PropsTextButton) => {
@@ -25,5 +24,5 @@ export const IconTextButton = ({ label, icon, onPress, conteinerStyle }: PropsTe
             />
             <Text className="ml-2">{label}</Text>
         </TouchableOpacity>
-    )
-}
+    );
+};

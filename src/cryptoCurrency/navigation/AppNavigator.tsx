@@ -1,22 +1,41 @@
 import { TouchableOpacity } from "react-native";
+import { ReactNode } from "react";
 
-import Home from "../screen/Home";
-import CriptoListas from "../screen/CriptoListas";
-import Referencias from "../screen/Referencias";
-import Perfil from "../screen/Perfil";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-// import Noticias from "../screen/Noticias";
-import { changeVisibiliteModel } from "../../redux/currencySlice";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import HomeScreen, { screenOptions as HomeOptions } from "../screen/Home";
+import NewsScreen, { screenOptions as NewsOptions } from "../screen/News";
+import CriptoCoinLists from "../screen/CryptoCoinLists";
+import References from "../screen/References";
+import Profile from "../screen/Profile";
+
 import TabIcons from "../components/TabIcons";
 import icons from "../../constants/icons";
 
-
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ReactNode } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { changeVisibiliteModel } from "../../redux/currencySlice";
 
 interface paransTabButton {
     children: ReactNode 
     onPress(): void
+};
+
+export type RootStackParams = {
+    HomeScreen: undefined
+    News: undefined
+};
+
+const StackNavigation = createStackNavigator<RootStackParams>();
+
+
+const HomeNavigation = () => {
+    return (
+        <StackNavigation.Navigator screenOptions={NewsOptions}>
+            <StackNavigation.Screen name="HomeScreen" component={HomeScreen} options={HomeOptions} />
+            <StackNavigation.Screen name="News" component={NewsScreen} />
+        </StackNavigation.Navigator>
+    );
 };
 
 const TabButtonsNaigator = createBottomTabNavigator();
@@ -27,28 +46,28 @@ const TabBarButtonCustom = ({ children, onPress }: paransTabButton) => {
             {children}
         </TouchableOpacity>
     );
-}
+};
 
 export const TabNavigation = () => {
 
     const dispatchTradeModel = useAppDispatch();
-    const selectorTradeModel = useAppSelector(state => state.Currency.isTradeModelVisible)
+    const selectorTradeModel = useAppSelector(state => state.Currency.isTradeModelVisible);
 
     function isTradeModelButtonClickHundle(): void {
         dispatchTradeModel(changeVisibiliteModel(!selectorTradeModel));
-    }
+    };
 
     return (
         <TabButtonsNaigator.Navigator 
             screenOptions={{
-                    headerShown: false,
-                    tabBarStyle: {height: 110, backgroundColor: 'black'},
-                    tabBarShowLabel: false
-                }}
+                headerShown: false,
+                tabBarStyle: {height: 110, backgroundColor: 'black'},
+                tabBarShowLabel: false
+            }}
         >
             <TabButtonsNaigator.Screen
                 name="Principal" 
-                component={Home} 
+                component={HomeNavigation} 
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (!selectorTradeModel) {
@@ -71,9 +90,10 @@ export const TabNavigation = () => {
                    }
                 }}
             />
+
             <TabButtonsNaigator.Screen 
                 name="Market" 
-                component={CriptoListas} 
+                component={CriptoCoinLists} 
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (!selectorTradeModel) {
@@ -96,9 +116,10 @@ export const TabNavigation = () => {
                     }
                  }}
             />
+
             <TabButtonsNaigator.Screen 
                 name="Trade" 
-                component={Home} 
+                component={HomeScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => {
                         return (
@@ -122,9 +143,10 @@ export const TabNavigation = () => {
                     )
                 }}
             />
+
             <TabButtonsNaigator.Screen 
                 name="Estudos" 
-                component={Referencias} 
+                component={References} 
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (!selectorTradeModel) {
@@ -147,9 +169,10 @@ export const TabNavigation = () => {
                     }
                  }}
             />
+
             <TabButtonsNaigator.Screen 
                 name="Perfil" 
-                component={Perfil}
+                component={Profile}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (!selectorTradeModel) {
@@ -173,5 +196,5 @@ export const TabNavigation = () => {
                  }}
             />
         </TabButtonsNaigator.Navigator>
-    )
-}
+    );
+};

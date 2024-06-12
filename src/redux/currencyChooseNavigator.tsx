@@ -1,10 +1,8 @@
-import React from "react";
+import { useSelector } from "react-redux";
 
 import { TabNavigation } from "../cryptoCurrency/navigation/AppNavigator";
 import {TabNavigationCoin} from "../Currency/navigation/AppNavigationCoin";
 import { rootReducer } from "../redux/store";
-
-import { useSelector } from "react-redux";
 
 export const CurrencyChooseNavigator = () => {
     const selectorChosenCurrency = useSelector((state: rootReducer) => state.Currency.chooseCurrency);
@@ -15,5 +13,5 @@ export const CurrencyChooseNavigator = () => {
                 selectorChosenCurrency === "CryptoCurrency" ? <TabNavigation /> : <TabNavigationCoin />
             }
         </>
-    )
-}
+    );
+};

@@ -3,4 +3,4 @@ const { height } = Dimensions.get("window");
 
 export const size = {
     height
-}
+};

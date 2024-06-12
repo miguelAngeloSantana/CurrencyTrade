@@ -1,12 +1,12 @@
-import React from 'react'
-
-import { CurrencyChooseNavigator } from './src/redux/currencyChooseNavigator';
-import { store } from './src/redux/store';
+import { Provider } from 'react-redux';;
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
 import 'react-native-gesture-handler';
-import { Provider } from 'react-redux';
+
+
+import { CurrencyChooseNavigator } from './src/redux/currencyChooseNavigator';
+import { store } from './src/redux/store';
 
 const Stack = createStackNavigator();
 
@@ -26,4 +26,4 @@ export default function App() {
       </NavigationContainer>
     </Provider>
   );
-}
+};

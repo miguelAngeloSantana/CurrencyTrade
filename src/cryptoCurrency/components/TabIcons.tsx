@@ -1,4 +1,3 @@
-import React from "react";
 import { View, Text, Image } from "react-native";
 
 interface paramsTabIcons {
@@ -9,8 +8,8 @@ interface paramsTabIcons {
     iconStyle?: {
         width:number,
         height:number,
-    }
-}
+    };
+};
 
 
 export default function TabIcons({ focused, icon, label, isTrade, iconStyle }: paramsTabIcons) {
@@ -38,7 +37,7 @@ export default function TabIcons({ focused, icon, label, isTrade, iconStyle }: p
                 />
                 <Text className="text-white text-xs mt-2">{label}</Text>
             </View>
-        )
+        );
     } else {
         return (
             <View className="items-center justify-center">
@@ -59,6 +58,6 @@ export default function TabIcons({ focused, icon, label, isTrade, iconStyle }: p
                     {label}
                 </Text>
             </View>
-        )
-    }
-}
+        );
+    };
+};

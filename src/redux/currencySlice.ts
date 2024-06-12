@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface PorpsCurrencySlice {
+export interface PropsCurrencySlice {
     isTradeModelVisible: boolean 
     chooseCurrency: string
-}
+};
 
-const initialState:PorpsCurrencySlice = {
+const initialState:PropsCurrencySlice = {
     isTradeModelVisible: false,
     chooseCurrency: "CryptoCurrency"
-}
+};
 
 const slice = createSlice({
     name: "Currency",
@@ -22,8 +22,8 @@ const slice = createSlice({
             state.chooseCurrency = action.payload
         }
     }
-})
+});
 
-export const { changeVisibiliteModel, renderChooseCurrency } = slice.actions
+export const { changeVisibiliteModel, renderChooseCurrency } = slice.actions;
 
-export const currencyReducer = slice.reducer
+export const currencyReducer = slice.reducer;

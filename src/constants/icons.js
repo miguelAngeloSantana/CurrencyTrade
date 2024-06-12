@@ -20,4 +20,4 @@ export default {
     close,
     bitcoinLogo,
     currency
-}
+};
