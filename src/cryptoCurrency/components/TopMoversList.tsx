@@ -93,36 +93,6 @@ export default function TopMoversList({ cryptoCoinData }: TopMoversListProps) {
           />
         )
       }
-
-      {/* {
-        cryptoCoinData.length === 0 ? (
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ 
-              marginRight: 16, paddingVertical: 16, display: 'flex', flexDirection: 'row', height: 200, paddingLeft: "6%"
-            }}
-          >
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-          </ScrollView>
-        ) : (
-          <FlatList 
-            data={cryptoCoinData}
-            keyExtractor={(item) => item.id.toString()}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            snapToOffsets={[...Array(cryptoCoinData.length)].map((x, i) => 158 * i * 162)}
-            decelerationRate={0}
-            snapToAlignment='center'
-            contentContainerStyle={{height: 160, paddingLeft: "6%"}}
-            renderItem={renderItem}
-          />
-        )
-      }; */}
     </View>
   );
 }

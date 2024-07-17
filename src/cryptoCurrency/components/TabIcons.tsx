@@ -35,7 +35,7 @@ export default function TabIcons({ focused, icon, label, isTrade, iconStyle }: p
                         ...iconStyle
                     }}
                 />
-                <Text className="text-white text-xs mt-2">{label}</Text>
+                <Text className="text-white text-xs mt-1">{label}</Text>
             </View>
         );
     } else {

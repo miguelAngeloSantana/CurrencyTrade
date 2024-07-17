@@ -2,16 +2,20 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import { currencyReducer } from "../redux/currencySlice";
-import { CryptoCoinListReducer } from "../cryptoCurrency/features/cryptoCoinList/cryptoCoinSlice";
+import { CryptoCoinReducer } from "../cryptoCurrency/features/cryptoCoin/cryptoCoinSlice";
 import { CryptoMoversListReducer } from "../cryptoCurrency/features/topMoversCrypto/cryptoMoversListSlice";
 import { NewsReducer } from "../cryptoCurrency/features/cryptoNews/cryptoNewsSlice";
+
+import { cryptoCoinListReducer } from "../cryptoCurrency/features/cryptoCoinList/cryptoCoinListSlice";
 
 export const store = configureStore({
     reducer: {
         Currency: currencyReducer,
-        CryptoCoin: CryptoCoinListReducer,
+        CryptoCoin: CryptoCoinReducer,
         topMoversCrypto: CryptoMoversListReducer,
-        News: NewsReducer
+        News: NewsReducer,
+
+        cryptoCoinList: cryptoCoinListReducer
     },
     
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

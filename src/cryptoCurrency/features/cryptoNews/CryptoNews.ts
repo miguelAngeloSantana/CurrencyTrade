@@ -36,8 +36,6 @@ export const CryptoNews = createAsyncThunk("News/fetchNews", async() => {
             return index === newsData.findIndex(item => item.url === itens.url)
         });
 
-        console.log(arrayUnicos.length)
-
         return arrayUnicos;
 
     } catch(error) {

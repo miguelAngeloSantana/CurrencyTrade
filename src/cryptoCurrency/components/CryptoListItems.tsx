@@ -4,13 +4,14 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 
 
 export interface CryptoItemsProps {
+    id: number
     name: string,
     symbol: string,
     price: number,
     percentChange: number
 };
 
-export const CryptoListItems = ({ name, symbol, price, percentChange }: CryptoItemsProps) => {
+export const CryptoListItems = ({ id, name, symbol, price, percentChange }: CryptoItemsProps) => {
 
   return (
     <TouchableOpacity>
@@ -22,7 +23,7 @@ export const CryptoListItems = ({ name, symbol, price, percentChange }: CryptoIt
                 <Image 
                     className='w-10 h-10 mr-4 bg-gray-500'
                     style={{ borderRadius: 16, borderWidth: 16 }}
-                    source={{uri: `https://assets.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png`}}
+                    source={{uri: `https://s2.coinmarketcap.com/static/img/coins/64x64/${id.toString()}.png`}}
                 />
                 <View>
                     <Text className='text-lg w-36 text-white'>{name}</Text>

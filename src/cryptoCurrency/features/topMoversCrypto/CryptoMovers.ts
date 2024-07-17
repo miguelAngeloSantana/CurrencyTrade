@@ -5,13 +5,12 @@ import axios from "axios";
 
 import enVariable from "../utils/enVariable";
 
-interface CryptoMoversProps {
+export interface CryptoMoversProps {
     quote_currency: string
     base_currency: string
 };
 
 export const CryptoMovers = createAsyncThunk("topMoversList/fetchTopMoversData", async() => {
-
     try {
         const topMoversResponse = await fetch('https://api.pro.coinbase.com/products');
         const topMoversCryptoData = await topMoversResponse.json();
@@ -28,10 +27,9 @@ export const CryptoMovers = createAsyncThunk("topMoversList/fetchTopMoversData",
         const arraySymboysMovers = moversCoin.join().slice(0, 1000);
 
         const { data } = await axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?tsyms=USD&relaxedValidation=true&fsyms=${arraySymboysMovers}`);
-        // const cryptoCoinApiResponse = await cryptoCoinApiData.json()
-        // console.log(data.RAW)
+       
         let moversDataAsArray = Object.values(data.RAW);
-    
+     
         moversDataAsArray.sort((a: any, b: any) =>
           Math.abs(a.USD.CHANGEPCT24HOUR) < Math.abs(b.USD.CHANGEPCT24HOUR) ? 1 : -1
         );      
@@ -69,7 +67,6 @@ export const CryptoMovers = createAsyncThunk("topMoversList/fetchTopMoversData",
                 break;
             };
         };
-        // console.log(cryptoCoinData)
         return cryptoCoinData;
     } catch (error) {
         console.log("Top Movers Error: ", error);

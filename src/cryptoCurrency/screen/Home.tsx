@@ -5,7 +5,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 
 import MainLayoutCrypto from "./MainLayoutCrypto";
 
-import { CryptoCoin } from "../features/cryptoCoinList/CryptoCoin";
+import { CryptoCoin } from "../features/cryptoCoin/CryptoCoin";
 import { CryptoMovers } from "../features/topMoversCrypto/CryptoMovers";
 import { CryptoNews } from "../features/cryptoNews/CryptoNews";
 
@@ -34,7 +34,7 @@ export default function Home({ navigation }: Props) {
   const selectorCryptoCoin = useAppSelector((state) => state.CryptoCoin.listCoin);
   const selectorTopMoversCrypto = useAppSelector((state) => state.topMoversCrypto.topMoversData);
   const selectorNews = useAppSelector((state) => state.News.newsData);
-
+  
   const loadDate = () => {
     try {
       dispatchCryptoCoin(CryptoCoin());

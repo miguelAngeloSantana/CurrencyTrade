@@ -14,13 +14,11 @@ const initialState: CryptoCoinState = {
 
 
 export const cryptoCoinSlice = createSlice({
+    
   name: "CryptoList",
   initialState,
-  reducers: {
-    displayListCryptoCoin(state, action: PayloadAction<ModelCryptoCoin[]>) {
-      state.listCoin = action.payload
-    }
-  },
+
+  reducers: {},
 
   extraReducers: (builder) => {
     builder.addCase(CryptoCoin.fulfilled, (state, action: PayloadAction<ModelCryptoCoin[]>) => {
@@ -29,8 +27,4 @@ export const cryptoCoinSlice = createSlice({
   }
 });
 
-export const { displayListCryptoCoin} = cryptoCoinSlice.actions;
-
-export const cryptoActions = cryptoCoinSlice.actions;
-
-export const CryptoCoinListReducer = cryptoCoinSlice.reducer;
+export const CryptoCoinReducer = cryptoCoinSlice.reducer;

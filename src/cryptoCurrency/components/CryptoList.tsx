@@ -54,6 +54,7 @@ export default function CryptoList({ coinData }: CryptoListProps) {
   function renderItem({ item }: ListRenderItemInfo<CryptoItemsProps>) {
     return ( 
       <CryptoListItems 
+        id={item.id}
         name={item.name}
         symbol={item.symbol}
         price={item.price}

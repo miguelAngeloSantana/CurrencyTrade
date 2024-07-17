@@ -14,11 +14,7 @@ const initialState: CryptoMoversList = {
 export const cryptoMoversListSlice = createSlice({
     name: "topMoversList",
     initialState,
-    reducers: {
-        displayMoversCrypto(state, action: PayloadAction<ModelCryptoCoin[]>) {
-            state.topMoversData = action.payload
-        }
-    },
+    reducers: {},
 
     extraReducers: (builder) => {
         builder.addCase(CryptoMovers.fulfilled, (state, action: PayloadAction<ModelCryptoCoin[]>) => {
@@ -26,9 +22,5 @@ export const cryptoMoversListSlice = createSlice({
         })
     }
 });
-
-export const { displayMoversCrypto } = cryptoMoversListSlice.actions;
-
-export const topMoversCrypto = cryptoMoversListSlice.actions;
 
 export const CryptoMoversListReducer = cryptoMoversListSlice.reducer;

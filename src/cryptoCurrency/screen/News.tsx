@@ -8,7 +8,6 @@ import NewsList from '../components/NewsList';
 import { useAppSelector } from '../../redux/store';
 import { RootStackParams } from '../navigation/AppNavigator';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
 
 type NewsScreenNavigationProps = StackNavigationProp<
   RootStackParams, 

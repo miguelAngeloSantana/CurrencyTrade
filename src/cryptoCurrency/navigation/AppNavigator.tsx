@@ -24,6 +24,7 @@ interface paransTabButton {
 export type RootStackParams = {
     HomeScreen: undefined
     News: undefined
+    CryptoList: undefined
 };
 
 const StackNavigation = createStackNavigator<RootStackParams>();
@@ -59,6 +60,7 @@ export const TabNavigation = () => {
 
     return (
         <TabButtonsNaigator.Navigator 
+            initialRouteName="Principal"
             screenOptions={{
                 headerShown: false,
                 tabBarStyle: {height: 110, backgroundColor: 'black'},
@@ -125,11 +127,11 @@ export const TabNavigation = () => {
                         return (
                             <TabIcons
                                 focused={focused}
-                                icon={selectorTradeModel? icons.close: icons.tradeIcon}
+                                icon={selectorTradeModel ? icons.close: icons.tradeIcon}
                                 iconStyle={selectorTradeModel? {
-                                    width: 35,
-                                    height: 22
-                                }: null}
+                                    width: 30,
+                                    height: 30,
+                                }: undefined}
                                 label='Trade'
                                 isTrade={true}
                             />              

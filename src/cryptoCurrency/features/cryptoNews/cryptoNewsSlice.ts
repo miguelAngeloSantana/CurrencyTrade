@@ -14,11 +14,7 @@ const initialState: NewsProps = {
 export const cryptoNews = createSlice({
     name: "News",
     initialState,
-    reducers: {
-        displayNew(state, action:PayloadAction<ModelNews[]>) {
-            state.newsData = action.payload
-        }
-    },  
+    reducers: {},
 
     extraReducers: (builder) => {
         builder.addCase(CryptoNews.fulfilled, (state, action: PayloadAction<ModelNews[]>) => {
@@ -26,9 +22,5 @@ export const cryptoNews = createSlice({
         })
     }
 });
-
-export const { displayNew } = cryptoNews.actions;
-
-export const newsDataAction = cryptoNews.actions;
 
 export const NewsReducer  = cryptoNews.reducer;

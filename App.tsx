@@ -6,6 +6,7 @@ import 'react-native-gesture-handler';
 
 
 import { CurrencyChooseNavigator } from './src/redux/currencyChooseNavigator';
+import CryptoCoinLists from './src/cryptoCurrency/screen/CryptoCoinLists';
 import { store } from './src/redux/store';
 
 const Stack = createStackNavigator();
@@ -21,6 +22,11 @@ export default function App() {
           <Stack.Screen 
             name="TelaPrincipal" 
             component={CurrencyChooseNavigator}
+          />
+
+          <Stack.Screen 
+            name="TelaExibirmoedas" 
+            component={CryptoCoinLists}
           />
         </Stack.Navigator>
       </NavigationContainer>
