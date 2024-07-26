@@ -6,10 +6,16 @@ import 'react-native-gesture-handler';
 
 
 import { CurrencyChooseNavigator } from './src/redux/currencyChooseNavigator';
-import CryptoCoinLists from './src/cryptoCurrency/screen/CryptoCoinLists';
 import { store } from './src/redux/store';
+import DetailsScreen, { screenOptions as DetailsScreenOptions } from './src/cryptoCurrency/screen/DetailsScreen';
 
-const Stack = createStackNavigator();
+export type AppStackParams = {
+  HomeScreen: undefined
+  DetailsScreen: { name: string, id: number, price: number, percentChange: number }
+}
+
+
+const Stack = createStackNavigator<AppStackParams>();
 
 export default function App() {
   return (
@@ -17,16 +23,17 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator 
           screenOptions={{headerShown: false}} 
-          initialRouteName={'TelaPrincipal'}
+          initialRouteName={'HomeScreen'}
         >
           <Stack.Screen 
-            name="TelaPrincipal" 
+            name="HomeScreen" 
             component={CurrencyChooseNavigator}
           />
 
           <Stack.Screen 
-            name="TelaExibirmoedas" 
-            component={CryptoCoinLists}
+            name="DetailsScreen" 
+            component={DetailsScreen}
+            options={DetailsScreenOptions}
           />
         </Stack.Navigator>
       </NavigationContainer>

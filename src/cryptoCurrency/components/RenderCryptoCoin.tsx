@@ -4,12 +4,13 @@ import ModelCryptoCoin from '../modelos/ModelCryptoCoin';
 
 import { CryptoItemsProps } from './CryptoListItems';
 import { RenderCryptoCoinListItems } from './RenderCryptoCoinListItems';
-
+import { DetailsScreenNavigation } from '../screen/CryptoCoinLists';
 interface CryptoCoinData {
     cryptoCoinDataList: ModelCryptoCoin[]
+    navigation: DetailsScreenNavigation
 };
 
-export default function RenderCryptoCoin({ cryptoCoinDataList }: CryptoCoinData){
+export default function RenderCryptoCoin({ cryptoCoinDataList, navigation }: CryptoCoinData){
 
   function renderItems({ item }: ListRenderItemInfo<CryptoItemsProps>) {
     return (
@@ -19,6 +20,7 @@ export default function RenderCryptoCoin({ cryptoCoinDataList }: CryptoCoinData)
         symbol={item.symbol}
         price={item.price}
         percentChange={item.percentChange}
+        navigation={navigation}
       />
     );
   };

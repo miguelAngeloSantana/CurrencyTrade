@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-import { StackNavigationProp, TransitionSpecs } from "@react-navigation/stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 

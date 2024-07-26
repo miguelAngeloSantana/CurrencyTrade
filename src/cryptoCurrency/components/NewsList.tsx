@@ -2,7 +2,6 @@ import { View, Text, FlatList, TouchableOpacity, ListRenderItemInfo, ScrollView 
 
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
 import { LinearGradient } from 'expo-linear-gradient';
-import  Animated  from "react-native-reanimated";
 
 import ModelNews from '../modelos/ModelNews';
 import { NewsListItems, NewsListProps } from './NewsListItems';

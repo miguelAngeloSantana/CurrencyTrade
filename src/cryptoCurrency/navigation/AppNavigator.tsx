@@ -6,7 +6,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen, { screenOptions as HomeOptions } from "../screen/Home";
 import NewsScreen, { screenOptions as NewsOptions } from "../screen/News";
-import CriptoCoinLists from "../screen/CryptoCoinLists";
+import CryptoCoinLists from "../screen/CryptoCoinLists";
+
 import References from "../screen/References";
 import Profile from "../screen/Profile";
 
@@ -24,7 +25,9 @@ interface paransTabButton {
 export type RootStackParams = {
     HomeScreen: undefined
     News: undefined
-    CryptoList: undefined
+    CryptoCoinLists: undefined
+    // DetailsScreen: { name: string, symbol: string }
+
 };
 
 const StackNavigation = createStackNavigator<RootStackParams>();
@@ -95,7 +98,7 @@ export const TabNavigation = () => {
 
             <TabButtonsNaigator.Screen 
                 name="Market" 
-                component={CriptoCoinLists} 
+                component={CryptoCoinLists} 
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (!selectorTradeModel) {
@@ -116,7 +119,7 @@ export const TabNavigation = () => {
                          e.preventDefault();
                      }
                     }
-                 }}
+                }}
             />
 
             <TabButtonsNaigator.Screen 

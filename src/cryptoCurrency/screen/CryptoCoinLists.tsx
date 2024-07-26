@@ -1,6 +1,8 @@
 import { View, Text, TextInput, StatusBar, SafeAreaView, FlatList, ActivityIndicator } from 'react-native';
 import { useEffect, useState } from 'react';
 
+import { StackNavigationProp } from '@react-navigation/stack';
+
 import Feather from "@expo/vector-icons/Feather";
 
 import MainLayoutCrypto from './MainLayoutCrypto';
@@ -12,7 +14,18 @@ import { cryptoCoinListActions } from '../features/cryptoCoinList/cryptoCoinList
 import Categories from "../components/categories"
 import RenderCryptoCoin from '../components/RenderCryptoCoin';
 
-export default function CryptoCoinLists() {
+import { AppStackParams } from '../../../App';
+
+export type DetailsScreenNavigation = StackNavigationProp<
+    AppStackParams,
+    "DetailsScreen"
+>;
+interface DetailsScreenProps {
+  navigation: DetailsScreenNavigation
+};
+
+export default function CryptoCoinLists({ navigation }: DetailsScreenProps) {
+  
   const [selecteCategorie, setSelecteCategorie] = useState(1);
   const [selecteFilter, setSelecteFilter] = useState("")
 
@@ -82,7 +95,7 @@ export default function CryptoCoinLists() {
 
   const loadComponents = [
     <Categories selecteCategorie={selecteCategorie} handleClickCategorie={handleClickCategorie} />,
-    <RenderCryptoCoin cryptoCoinDataList={selectorCryptoList} /> 
+    <RenderCryptoCoin cryptoCoinDataList={selectorCryptoList} navigation={navigation} /> 
   ];
 
 

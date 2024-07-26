@@ -1,20 +1,22 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-
+import { DetailsScreenNavigation } from '../screen/CryptoCoinLists';
 export interface CryptoListItemProps {
     id: number
     name: string,
     symbol: string,
     price: number,
     percentChange: number
+    navigation: DetailsScreenNavigation
 };
 
 
-export const RenderCryptoCoinListItems = ({ id, name, symbol, price, percentChange }: CryptoListItemProps) => {
-
+export const RenderCryptoCoinListItems = ({ id, name, symbol, price, percentChange, navigation }: CryptoListItemProps) => {
     let stylePercentChange = percentChange > 0? 'text-lime-400': 'text-red-600';
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+        onPress={() => navigation.navigate("DetailsScreen", { name: name, id: id, price: price, percentChange: percentChange })}
+    >
         <View className='flex-row items-center justify-between w-full h-20 p-4'>
             <View className='flex-row items-center'>
                 <Image 
