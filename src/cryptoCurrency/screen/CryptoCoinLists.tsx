@@ -20,6 +20,7 @@ export type DetailsScreenNavigation = StackNavigationProp<
     AppStackParams,
     "DetailsScreen"
 >;
+
 interface DetailsScreenProps {
   navigation: DetailsScreenNavigation
 };
@@ -50,13 +51,16 @@ export default function CryptoCoinLists({ navigation }: DetailsScreenProps) {
   };
 
   function handelDisplayCoinFiltred(displayCoinData: any) {
-
       setTimeout(() => {  
         dispatch(cryptoCoinListActions.changeFilter(false));  
         dispatch(displayCoinData);  
       }, 1000)
       dispatch(cryptoCoinListActions.changeFilter(true));  
     
+  };
+
+  const getSearch = (coin: string) => {
+    setSearchCoin(coin);
   };
 
   useEffect(() => {
@@ -75,10 +79,6 @@ export default function CryptoCoinLists({ navigation }: DetailsScreenProps) {
     };
     
   }, [selecteFilter]);
-
-  const getSearch = (coin: string) => {
-    setSearchCoin(coin);
-  };
 
   useEffect(() => {
     dispatch(cryptoCoinListActions.displaySeacrCoin(searchCoin));
@@ -114,7 +114,7 @@ export default function CryptoCoinLists({ navigation }: DetailsScreenProps) {
         </View>
 
         {
-          selectorIsChangeFilter ? (<ActivityIndicator size="large" color={'white'} className="mt-20" />) 
+          selectorIsChangeFilter ? (<ActivityIndicator size="large" color={'black'} className="bg-white mt-20" />) 
           : (
             <FlatList 
               data={loadComponents}

@@ -7,11 +7,12 @@ import 'react-native-gesture-handler';
 
 import { CurrencyChooseNavigator } from './src/redux/currencyChooseNavigator';
 import { store } from './src/redux/store';
-import DetailsScreen, { screenOptions as DetailsScreenOptions } from './src/cryptoCurrency/screen/DetailsScreen';
+import DetailsScreen from './src/cryptoCurrency/screen/DetailsScreen';
+
 
 export type AppStackParams = {
   HomeScreen: undefined
-  DetailsScreen: { name: string, id: number, price: number, percentChange: number }
+  DetailsScreen: { name: string, symbol: string, id: number, price: number, percentChange: number }
 }
 
 
@@ -33,7 +34,7 @@ export default function App() {
           <Stack.Screen 
             name="DetailsScreen" 
             component={DetailsScreen}
-            options={DetailsScreenOptions}
+            // options={DetailsScreenOptions}
           />
         </Stack.Navigator>
       </NavigationContainer>

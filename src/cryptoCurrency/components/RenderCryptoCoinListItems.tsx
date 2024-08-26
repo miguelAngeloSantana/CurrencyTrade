@@ -1,4 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+
+import Animeted, { FadeInDown } from "react-native-reanimated"
+
 import { DetailsScreenNavigation } from '../screen/CryptoCoinLists';
 export interface CryptoListItemProps {
     id: number
@@ -15,9 +18,14 @@ export const RenderCryptoCoinListItems = ({ id, name, symbol, price, percentChan
 
   return (
     <TouchableOpacity
-        onPress={() => navigation.navigate("DetailsScreen", { name: name, id: id, price: price, percentChange: percentChange })}
+        onPress={() => navigation.navigate("DetailsScreen", { name: name, symbol: symbol, id: id, price: price, percentChange: percentChange })}
+        key={id}
+        className='pb-4'
     >
-        <View className='flex-row items-center justify-between w-full h-20 p-4'>
+        <Animeted.View 
+            entering={FadeInDown.delay(100).duration(700).springify().damping(21)}
+            className='flex-row items-center justify-between w-full h-20 p-4'
+        >
             <View className='flex-row items-center'>
                 <Image 
                     source={{ uri: `https://s2.coinmarketcap.com/static/img/coins/64x64/${id.toString()}.png` }}
@@ -27,8 +35,8 @@ export const RenderCryptoCoinListItems = ({ id, name, symbol, price, percentChan
                 />
 
                 <View>
-                    <Text className='text-lg w-36 text-gray-200'>
-                        { name.length > 15? name.slice(0, 16) + "...": name }
+                    <Text className='text-lg w-40 text-gray-200'>
+                        { name.length > 15? name.slice(0, 12) + "...": name }
                     </Text>
                     <Text className='text-base text-gray-500'>( {symbol} )</Text>
                 </View>
@@ -49,7 +57,7 @@ export const RenderCryptoCoinListItems = ({ id, name, symbol, price, percentChan
                     { percentChange?.toFixed(2) }%
                 </Text>
             </View>
-        </View>
+        </Animeted.View>
     </TouchableOpacity>
   );
 };

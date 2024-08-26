@@ -17,8 +17,8 @@ export const cryptoNews = createSlice({
     reducers: {},
 
     extraReducers: (builder) => {
-        builder.addCase(CryptoNews.fulfilled, (state, action: PayloadAction<ModelNews[]>) => {
-            state.newsData = action.payload
+        builder.addCase(CryptoNews.fulfilled, (state, action: PayloadAction<ModelNews[] | undefined>) => {
+            state.newsData = action.payload ?? []
         })
     }
 });

@@ -21,8 +21,8 @@ export const cryptoCoinSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(CryptoCoin.fulfilled, (state, action: PayloadAction<ModelCryptoCoin[]>) => {
-      state.listCoin = action.payload
+    builder.addCase(CryptoCoin.fulfilled, (state, action: PayloadAction<ModelCryptoCoin[] | undefined>) => {
+      state.listCoin = action.payload ?? []
     })
   }
 });

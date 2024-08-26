@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import ModelCryptoCoin from "../../modelos/ModelCryptoCoin";
 import axios from "axios";
 
-import enVariable from "../utils/enVariable";
+import enVariable from "../../../utils/enVariable";
 
 export interface CryptoMoversProps {
     quote_currency: string

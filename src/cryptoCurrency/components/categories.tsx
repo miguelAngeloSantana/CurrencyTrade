@@ -1,13 +1,13 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 
 import { listCategoires } from "../../constants/listCategoires";
 
-interface teste {
+interface CategoriesProps {
   selecteCategorie: number
   handleClickCategorie: (index: number, categoria:string) => void
-}
+};
 
-export default function Categories({ selecteCategorie, handleClickCategorie }: teste) {
+export default function Categories({ selecteCategorie, handleClickCategorie }: CategoriesProps) {
 
   return (
     <View className='mt-2 px-3'>
@@ -42,5 +42,5 @@ export default function Categories({ selecteCategorie, handleClickCategorie }: t
         </ScrollView>
       }
     </View>
-  )
-}
+  );
+};

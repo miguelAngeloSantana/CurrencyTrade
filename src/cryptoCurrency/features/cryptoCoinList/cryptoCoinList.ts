@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 import ModelCryptoCoin from "../../modelos/ModelCryptoCoin";
-import enVariable from "../utils/enVariable";
+import enVariable from "../../../utils/enVariable";
 
 interface CoinListProps {
     quote_currency: string

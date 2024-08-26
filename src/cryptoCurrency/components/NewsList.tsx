@@ -38,7 +38,6 @@ const Skeleton = () => {
 };
 
 export default function NewsList({ newsListDate, isHomeScreen, viewMoreHandle }: NewsProps) {
-  const urlUnicos = new Set(newsListDate)
   function renderItem({ item }: ListRenderItemInfo<NewsListProps>) {
     return (
       <NewsListItems 

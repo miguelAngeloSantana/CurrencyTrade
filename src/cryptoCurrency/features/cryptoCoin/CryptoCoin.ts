@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import ModelCryptoCoin from "../../modelos/ModelCryptoCoin";
-import enVariable from "../utils/enVariable";
+import enVariable from "../../../utils/enVariable";
 
 export const CryptoCoin = createAsyncThunk("CryptoList/fetchCryptoData", async () => {
     const cryptoSymbols = ['BTC', 'ETH', 'USDT', 'LINK', 'ADA'];
