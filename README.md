@@ -1,13 +1,16 @@
 # Currency Wallet
 
-![Tela de Loading](https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Loading.png)
-![Tela Principal 1](https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Principal-1.png)
-![Tela Principal 2](https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Principal-2.png)
-![Tela de Exibir as Cryptomoedas](https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Exibir-Moedas.png)
-![Tela das CryptoMoedas Pesquisadas](https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Moedas-Pesquisadas.png)
-![Tela de Detalhes 1](https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Detalhes-1.png)
-![Tela de Detalhes 2](https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Detalhes-2.png)
+<div align="center">
+  <img src="https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Loading.png" alt="Tela de Loading" width="200px"/>
+  <img src="https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Principal-1.png" alt="Tela Principal 1" width="200px"/>
+  <img src="https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Principal-2.png" alt="Tela Principal 2" width="200px"/>
+  <img src="https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Exibir-Moedas.png" alt="Tela de Exibir as Cryptomoedas" width="200px"/>
+  <img src="https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Moedas-Pesquisadas.png" alt="Tela das CryptoMoedas Pesquisadas" width="200px"/>
+  <img src="https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Detalhes-1.png" alt="Tela de Detalhes 1" width="200px"/>
+  <img src="https://github.com/miguelAngeloSantana/CurrencyTrade/blob/main/screenshots/Tela-Detalhes-2.png" alt="Tela de Detalhes 2" width="200px"/>
+</div>
 
+## Descrição
 A ideia é fazer um aplicativo que mostre os valores atualizandos tanto das criptomoedas como das moedas fisicas. Para isso, o aplicativo terá um botão para permitir que o usuario escolha qual tipo de moedas ele quer acompanhar.
 
 ## Funções do aplicativo com as criptomoedas:
